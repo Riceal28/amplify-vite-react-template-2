@@ -25,9 +25,9 @@ function App() {
   function createTodo() {
     const content = window.prompt("Todo content");
     if (content) {
-      //const userId = user?.signInDetails?.loginId || 'anonymous';
+      const userId = user?.signInDetails?.loginId || 'anonymous';
       client.models.Todo.create({
-        content: `${content}`,
+        content: `${content}(${userId})`,
       });
     }
   }
@@ -52,7 +52,6 @@ function App() {
           >
             <div className="message-container">
               <div className="user-info">
-              <span className="user-id-box">{user?.signInDetails?.loginId || 'anonymous'}</span>
               <span className="timestamp right-align">{new Date(todo.createdAt).toLocaleString()}</span>
             </div>
             <span className="todo-content">{todo.content}</span>
